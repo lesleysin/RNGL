@@ -1,0 +1,48 @@
+{
+  "name": "RNGLLIB",
+  "version": "0.0.1",
+  "description": "YOUR_DESCRIPTION",
+  "react-native": "js/index",
+  "source": "js/index",
+  "main": "./js/index.ts",
+  "files": [
+    "js",
+    "android",
+    "ios",
+    "cpp",
+    "RNGLLIB.podspec",
+    "!android/build",
+    "!ios/build",
+    "!**/__tests__",
+    "!**/__fixtures__",
+    "!**/__mocks__"
+  ],
+  "keywords": [
+    "react-native",
+    "ios",
+    "android"
+  ],
+  "repository": "https://github.com/<your_github_handle>/<your_repo_name>",
+  "author": "<your_name> <your_email@your_provider.com> (https://github.com/<your_github_handle>)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/<your_github_handle>/rtn-calculator/issues"
+  },
+  "registry": "",
+  "homepage": "https://github.com/<your_github_handle>/<your_repo_name>#readme",
+  "devDependencies": {
+    "@types/react": "^18.0.29",
+    "react": "^18.2.0",
+    "react-native": "^0.71.4",
+    "typescript": "^5.0.2"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  },
+  "codegenConfig": {
+    "name": "RNGLLIBSpecs",
+    "type": "components",
+    "jsSrcsDir": "js"
+  }
+}
