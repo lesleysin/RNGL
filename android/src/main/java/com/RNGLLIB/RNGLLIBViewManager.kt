@@ -34,23 +34,28 @@ public class RNGLLIBViewManager(var reactContext: ReactContext) : ViewGroupManag
         return RNGLLIBView(ctx)
     }
 
-    @ReactProp(name = "fragmentShader")
-    override fun setFragmentShader(view: RNGLLIBView?, value: String?) {
-    }
-
-    @ReactProp(name = "vertexShader")
-    override fun setVertexShader(view: RNGLLIBView?, value: String?) {
-    }
-
     @ReactProp(name = "points")
     override fun setPoints(view: RNGLLIBView?, value: ReadableArray?) {
+        view?.setPoints(value)
     }
 
     @ReactProp(name = "glLineWidth")
     override fun setGlLineWidth(view: RNGLLIBView?, value: Float) {
+        view?.setGlLineWidth(value)
     }
 
     @ReactProp(name = "glPointSize")
     override fun setGlPointSize(view: RNGLLIBView?, value: Float) {
+        view?.setGlPointSize(value)
+    }
+
+    @ReactProp(name = "shaderPair")
+    override fun setShaderPair(view: RNGLLIBView?, value: ReadableArray?) {
+        view?.setShaderPair(value)
+    }
+
+    @ReactProp(name = "active")
+    override fun setActive(view: RNGLLIBView?, value: Boolean) {
+        view?.setActive(value)
     }
 }

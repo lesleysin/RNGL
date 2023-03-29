@@ -17,6 +17,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
 import com.facebook.react.bridge.LifecycleEventListener
 import com.facebook.react.bridge.ReactContext
+import com.facebook.react.bridge.ReadableArray
 import javax.microedition.khronos.egl.EGLConfig
 import javax.microedition.khronos.opengles.GL10
 
@@ -26,7 +27,6 @@ class RNGLLIBView(ctx: ReactContext) : FrameLayout(ctx), LifecycleOwner {
     private val appCtx: ReactContext;
     private var renderer: CustomGlRenderer = CustomGlRenderer();
     private var glSurface: GLSurfaceView = GLSurfaceView(ctx);
-    private var lineWidth: Float = 0f;
 
     init {
         appCtx = ctx;
@@ -37,7 +37,6 @@ class RNGLLIBView(ctx: ReactContext) : FrameLayout(ctx), LifecycleOwner {
            glSurface.setEGLConfigChooser(8, 8, 8, 8, 16, 0)
            glSurface.holder.setFormat(PixelFormat.RGBA_8888)
            glSurface.setRenderer(renderer)
-           Log.i("RNGL", "" + this.lifecycleRegistry)
 
            ctx.addLifecycleEventListener(object : LifecycleEventListener {
                override fun onHostResume() {
@@ -61,20 +60,6 @@ class RNGLLIBView(ctx: ReactContext) : FrameLayout(ctx), LifecycleOwner {
        }
     }
 
-   private class RenderManager : GLSurfaceView.Renderer {
-        override fun onSurfaceCreated(gl: GL10?, config: EGLConfig?) {
-        }
-
-        override fun onSurfaceChanged(gl: GL10?, width: Int, height: Int) {
-        }
-
-        override fun onDrawFrame(gl: GL10?) {
-
-        }
-
-    }
-
-
     private fun supportES2(): Boolean {
         val activityManager = appCtx.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager?
         val configurationInfo: ConfigurationInfo = activityManager!!.deviceConfigurationInfo
@@ -86,10 +71,22 @@ class RNGLLIBView(ctx: ReactContext) : FrameLayout(ctx), LifecycleOwner {
     }
 
     fun setGlLineWidth(value: Float) {
-        lineWidth = value;
-        val newRenderer = CustomGlRenderer()
-        glSurface.setRenderer(newRenderer)
-        Log.i("RNGL", "GlLineWidth changed to: $value")
+    }
+
+    fun setGlPointSize(value: Float) {
+
+    }
+
+    fun setShaderPair(value: ReadableArray?) {
+
+    }
+
+    fun setActive(value: Boolean) {
+        renderer.isActive = value;
+    }
+
+    fun setPoints(value: ReadableArray?) {
+
     }
 
 }

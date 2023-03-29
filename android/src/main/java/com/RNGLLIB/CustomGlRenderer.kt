@@ -9,6 +9,7 @@ import javax.microedition.khronos.opengles.GL10
 
 class CustomGlRenderer : Renderer {
     private lateinit var mTriangle: Triangle
+    var isActive: Boolean = false
 
     override fun onSurfaceCreated(gl: GL10?, config: EGLConfig?) {
         Log.i("Renderer", "onSurfaceCreated")
@@ -22,7 +23,9 @@ class CustomGlRenderer : Renderer {
     }
 
     override fun onDrawFrame(gl: GL10?) {
-        Log.i("Renderer", "onDrawFrame")
-        mTriangle.draw()
+        if (isActive) {
+            Log.i("Renderer", "onDrawFrame")
+            mTriangle.draw()
+        }
     }
 }

@@ -26,7 +26,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import RNGLAppWrapper from 'RNGLLIB/js/NativeRNGLLIBProps';
+import RNGLLIB from 'RNGLLIB/js/NativeRNGLLIBProps';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -65,6 +65,7 @@ const RNGLApp = (app: JSX.Element) => {
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
   const [count, setCount] = useState(0);
+  const [active, setActive] = useState(true);
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
@@ -72,6 +73,10 @@ function App(): JSX.Element {
 
   function addVal() {
     setCount(count + 1);
+  }
+
+  function act() {
+    setActive(!active);
   }
 
   const TxtC = (text: number) => {
@@ -123,27 +128,17 @@ function App(): JSX.Element {
         </View>
       </ScrollView> */}
       {/* <View> */}
-      <RNGLAppWrapper
+      <RNGLLIB
         style={{flex: 1}}
-        fragmentShader={
-          'precision mediump float;' +
-          'uniform vec4 u_Color;' +
-          'void main() {' +
-          'gl_FragColor = u_Color;' +
-          '}'
-        }
-        vertexShader={
-          'attribute vec4 a_Position;' +
-          'void main() {' +
-          'gl_Position = a_Position;' +
-          '}'
-        }
+        active={active}
+        points={[]}
+        shaderPair={['1', '2']}
         glLineWidth={count}
         glPointSize={1}>
         <ScrollView>{list()}</ScrollView>
         {/* <Button title="TETS" /> */}
-      </RNGLAppWrapper>
-      <Button title={`Click ${count}`} onPress={addVal} />
+      </RNGLLIB>
+      <Button title={`Click ${count}`} onPress={act} />
       {/* </View> */}
     </SafeAreaView>
   );

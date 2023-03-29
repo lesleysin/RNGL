@@ -1,21 +1,27 @@
-// import type {ViewProps} from 'ViewPropTypes';
 import React from 'react'
 import type {HostComponent, ViewProps} from 'react-native';
 import codegenNativeComponent from 'react-native/Libraries/Utilities/codegenNativeComponent';
 
-type Float = number;
+//NOTE - react native codegen require define number-based type as Float, Int32 or Double
 
 export interface NativeProps extends ViewProps {
-  fragmentShader?: string;
-  vertexShader?: string;
-  points?: Float[];
+  /**
+   * Defines an array of vertex values ​​for graphics primitives
+   */
+  points: Float[];
 
+  /**
+   * @class located in RNGLLIB/js/types/ShaderPair.ts
+   */
+  shaderPair: string[];
 
-  //GL props
-  glLineWidth: Float;
-  glPointSize: Float;
-  // onShaderLoaded?: (...args: any[]) => Promise<void>;
-  // add other props here
+  /**
+   * Determines whether the body of the onDrawFrame function will be executed
+   */
+  active: boolean;
+
+  glLineWidth?: Float;
+  glPointSize?: Float;
 }
 
 export default codegenNativeComponent<NativeProps>(

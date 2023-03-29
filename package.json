@@ -32,8 +32,7 @@
   "homepage": "https://github.com/<your_github_handle>/<your_repo_name>#readme",
   "devDependencies": {
     "@types/react": "^18.0.29",
-    "react": "^18.2.0",
-    "react-native": "^0.71.4",
+    "rn-tms": "^1.4.0",
     "typescript": "^5.0.2"
   },
   "peerDependencies": {
@@ -44,5 +43,6 @@
     "name": "RNGLLIBSpecs",
     "type": "components",
     "jsSrcsDir": "js"
-  }
+  },
+  "dependencies": {}
 }
